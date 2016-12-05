@@ -6,9 +6,7 @@ Current features:
  - Will calculate success probabilities for various scenarios (standard roll, re-roll weak successes, strong successes count double)
  - Calculates chances of taking damage
  
- Known issues:
- - Success chances show up as 0% if you enter one die
- 
+
  Features to add
   - Add endeavour helper layout that will auto-calculate dice pool.  This would include:
     1. Radio buttons for Raid/Explore
