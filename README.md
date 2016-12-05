@@ -1,6 +1,6 @@
-# seafall-helper
+# Seafall Steward
 
-Seafall Helper is an Android app intended to assist in playing the board game SeaFall.
+Seafall Steward is an Android app intended to assist in playing the board game SeaFall.
 
 Current features:
  - Will calculate success probabilities for various scenarios (standard roll, re-roll weak successes, strong successes count double)
