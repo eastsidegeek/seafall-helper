@@ -1,9 +1,17 @@
 <resources>
-    <string name="app_name">SeaFall Test</string>
+    <string name="app_name">SeaFall Steward</string>
     <string name="strongon">Stong Successes Double</string>
     <string name="strongoff">Stong Successes Normal</string>
     <string name="rerollweakon">Reroll Weak Successes</string>
     <string name="rerollweakoff">Don\'t Reroll Weak</string>
     <string name="calculatego">Calculate Probabilties</string>
     <string name="howmanydice">How Many Dice?</string>
+    <string name="raid">Raid</string>
+    <string name="explore">Explore</string>
+    <string name="sail">Sail</string>
+    <string name="dicedettitle">Determine Endeavour Dice</string>
+    <string name="endtype">Choose Endeavour Type</string>
+    <string name="addlfactors">Additional Factors</string>
+    <string name="defense">Site Defense</string>
+    <string name="flagshipstats">Flagship Stats</string>
 </resources>
