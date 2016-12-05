@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SeaFall Test</string>
+    <string name="strongon">Stong Successes Double</string>
+    <string name="strongoff">Stong Successes Normal</string>
+    <string name="rerollweakon">Reroll Weak Successes</string>
+    <string name="rerollweakoff">Don\'t Reroll Weak</string>
+    <string name="calculatego">Calculate Probabilties</string>
+    <string name="howmanydice">How Many Dice?</string>
+</resources>
