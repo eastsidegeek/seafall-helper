@@ -1,6 +1,7 @@
 package com.example.seafalltest;
 
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.util.Log;
 import android.widget.Switch;
-
+import android.content.Intent;
+import android.widget.ScrollView;
+import android.view.MotionEvent;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonDiceInc;
     private Button buttonDefenseDec;
     private Button buttonDefenseInc;
+    private Button buttonWizard;
 
+    private ScrollView scrollView2;
+
+    public static final int DETERMINE_DICE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +52,25 @@ public class MainActivity extends AppCompatActivity {
         buttonDiceInc = (Button) findViewById(R.id.buttonDiceInc);
         buttonDefenseDec = (Button) findViewById(R.id.buttonDefenseDec);
         buttonDefenseInc = (Button) findViewById(R.id.buttonDefenseInc);
+        buttonWizard = (Button) findViewById(R.id.buttonWizard);
+
+        scrollView2 = (ScrollView) findViewById(R.id.scrollView2);
+
+        editTextDiceCount.setInputType(0);
+        editTextDefense.setInputType(0);
+
+        scrollView2.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+           public boolean onTouch(View arg0, MotionEvent event) {
+               if (editTextDiceCount.hasFocus()) {
+                   editTextDiceCount.clearFocus();
+               }
+               if (editTextDefense.hasFocus()) {
+                   editTextDefense.clearFocus();
+               }
+               return false;
+           }
+       });
 
         buttonCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
                 stringDefense = editTextDefense.getText().toString();
                 intDefense = Integer.parseInt(stringDefense);
                 double doubleDamageChance = 0.0;
+                double doubleOneDamage = 0.0;
+                double doubleTwoDamage = 0.0;
+                double doubleThreePlusDamage = 0.0;
                 int i;
 
                 doubleProbs = findResults(intDiceCount);
@@ -67,10 +96,21 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     for(i=0;i<intDefense;i++) {
                         doubleDamageChance += doubleProbs[i]*100;
-                    }
+                        if((intDefense-i)==1) {
+                            doubleOneDamage = doubleDamageChance;
+                        }
+                        if((intDefense-i)==2) {
+                            doubleTwoDamage = doubleDamageChance;
+                        }
+                        if((intDefense-i)==3) {
+                            doubleThreePlusDamage = doubleDamageChance;
+                        }
+
+                    } // end for
                 } // end resultLength
 
-                stringResults += "Chance of Damage: "+String.format("%2.1f",doubleDamageChance)+"%\n\n";
+                stringResults += "Chance of No Damage: "+String.format("%2.1f",(100-doubleDamageChance))+"%\n";
+                stringResults += "Chance of 1/2/3+ Damage: "+String.format("%2.1f",doubleOneDamage)+"% / "+String.format("%2.1f",doubleTwoDamage)+"% / "+String.format("%2.1f",doubleThreePlusDamage)+"%\n\n";
 
                 for (i = 0; i < resultLength; i++) {
                     if (i == 1) {
@@ -85,6 +125,15 @@ public class MainActivity extends AppCompatActivity {
                 textViewResults.setText(stringResults);
             } // end onClick
         }); // end new OnClickListener (buttonCalculate)
+
+        buttonWizard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(MainActivity.this,DetermineDice.class);
+                MainActivity.this.startActivityForResult(intent,DETERMINE_DICE);
+
+            } // end onClick
+        }); // end new OnClickListener (buttonWizard)
 
         buttonDiceDec.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +196,20 @@ public class MainActivity extends AppCompatActivity {
 
     } // end onCreate
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        switch(requestCode) {
+            case DETERMINE_DICE:
+                if (resultCode == RESULT_OK) {
+
+                    Bundle bundle = data.getExtras();
+                    editTextDiceCount.setText(Integer.toString(bundle.getInt("diceCount")));
+                    editTextDefense.setText(Integer.toString(bundle.getInt("defense")));
+                    break;
+                } // end if result code ok
+        } // end switch
+
+    } // end onActivityResult
 
     private double[] findResults ( int intDice){
         double[] localProbs;
@@ -227,5 +290,6 @@ public class MainActivity extends AppCompatActivity {
     } // end multiplyPolys
 
 
-} // end MainActivity
+} // end MainActivity class extending AppCompatActivity
+
 
