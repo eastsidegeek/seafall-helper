@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/scrollView1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/shipstat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView11"
+                android:layout_below="@+id/textView9"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:text="@string/statdamage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonFlagshipUpgradeDec"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/textView10" />
+
+            <TextView
+                android:text="@string/supportshipsats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9"
+                android:textSize="18sp"
+                android:layout_below="@+id/viewspace2"
+                android:layout_alignRight="@+id/textView3"
+                android:layout_alignEnd="@+id/textView3" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:layout_below="@+id/textView10"
+                android:layout_alignLeft="@+id/textView9"
+                android:layout_alignStart="@+id/textView9"
+                android:id="@+id/editTextFlagshipDamage"
+                android:text="0"
+                android:layout_toLeftOf="@+id/buttonFlagshipUpgradeDec"
+                android:layout_toStartOf="@+id/buttonFlagshipUpgradeDec" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView10"
+                android:layout_toRightOf="@+id/buttonFlagshipDamageDec"
+                android:layout_toEndOf="@+id/buttonFlagshipDamageDec"
+                android:id="@+id/buttonFlagshipDamageInc"
+                android:minWidth="44dip" />
+
+            <TextView
+                android:text="@string/primaryshipupgrades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextSupportShipPrimaryStat"
+                android:layout_alignLeft="@+id/textView9"
+                android:layout_alignStart="@+id/textView9"
+                android:id="@+id/textView12" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:layout_below="@+id/textView12"
+                android:layout_alignLeft="@+id/textView12"
+                android:layout_alignStart="@+id/textView12"
+                android:id="@+id/editTextSupportShipUpgrade"
+                android:text="0"
+                android:layout_toLeftOf="@+id/buttonSupportShipUpgradeDec"
+                android:layout_toStartOf="@+id/buttonSupportShipUpgradeDec" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView12"
+                android:layout_alignLeft="@+id/buttonSupportShipPrimaryStatDec"
+                android:layout_alignStart="@+id/buttonSupportShipPrimaryStatDec"
+                android:id="@+id/buttonSupportShipUpgradeDec"
+                android:minWidth="44dip" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView12"
+                android:layout_toRightOf="@+id/buttonSupportShipUpgradeDec"
+                android:layout_toEndOf="@+id/buttonSupportShipUpgradeDec"
+                android:id="@+id/buttonSupportShipUpgradeInc"
+                android:minWidth="44dip" />
+
+            <TextView
+                android:text="@string/statdamage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextSupportShipUpgrade"
+                android:layout_alignLeft="@+id/editTextSupportShipUpgrade"
+                android:layout_alignStart="@+id/editTextSupportShipUpgrade"
+                android:id="@+id/textView13" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView13"
+                android:layout_toRightOf="@+id/editTextSupportShipDamage"
+                android:layout_toEndOf="@+id/editTextSupportShipDamage"
+                android:id="@+id/buttonSupportShipDamageDec"
+                android:minWidth="44dip" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView13"
+                android:layout_toRightOf="@+id/buttonSupportShipDamageDec"
+                android:layout_toEndOf="@+id/buttonSupportShipDamageDec"
+                android:id="@+id/buttonSupportShipDamageInc"
+                android:minWidth="44dip" />
+
+            <TextView
+                android:text="@string/advisorstat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewspace3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/textView14"
+                android:textSize="18sp" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView11"
+                android:layout_toRightOf="@+id/editTextSupportShipPrimaryStat"
+                android:layout_toEndOf="@+id/editTextSupportShipPrimaryStat"
+                android:id="@+id/buttonSupportShipPrimaryStatDec"
+                android:minWidth="44dip" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextSupportShipPrimaryStat"
+                android:text="0"
+                android:layout_below="@+id/textView11"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/buttonFlagshipUpgradeDec"
+                android:layout_toStartOf="@+id/buttonFlagshipUpgradeDec" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextFlagshipUpgrade"
+                android:text="0"
+                android:layout_alignBaseline="@+id/buttonFlagshipUpgradeDec"
+                android:layout_alignBottom="@+id/buttonFlagshipUpgradeDec"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/buttonFlagshipPrimaryStatDec"
+                android:layout_toStartOf="@+id/buttonFlagshipPrimaryStatDec" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView8"
+                android:layout_toRightOf="@+id/buttonFlagshipUpgradeDec"
+                android:layout_toEndOf="@+id/buttonFlagshipUpgradeDec"
+                android:id="@+id/buttonFlagshipUpgradeInc"
+                android:minWidth="44dip" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView8"
+                android:layout_toRightOf="@+id/editTextFlagshipUpgrade"
+                android:layout_toEndOf="@+id/editTextFlagshipUpgrade"
+                android:id="@+id/buttonFlagshipUpgradeDec"
+                android:minWidth="44dip" />
+
+            <TextView
+                android:text="@string/primaryshipupgrades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextFlagshipPrimaryStat"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/textView8" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonFlagshipPrimaryStatDec"
+                android:minWidth="44dip"
+                android:layout_alignBottom="@+id/editTextFlagshipPrimaryStat"
+                android:layout_toRightOf="@+id/RadioGroupEndeavourType"
+                android:layout_toEndOf="@+id/RadioGroupEndeavourType" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextFlagshipPrimaryStat"
+                android:text="3"
+                android:layout_below="@+id/textView7"
+                android:layout_toStartOf="@+id/buttonFlagshipPrimaryStatDec"
+                android:layout_alignRight="@+id/RadioGroupEndeavourType"
+                android:layout_alignEnd="@+id/RadioGroupEndeavourType" />
+
+            <TextView
+                android:text="@string/shipstat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView6"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/textView7" />
+
+            <TextView
+                android:text="@string/flagshipstats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:layout_below="@+id/viewspace1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="18sp" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/buttonFlagshipPrimaryStatDec"
+                android:layout_toRightOf="@+id/buttonFlagshipPrimaryStatDec"
+                android:layout_toEndOf="@+id/buttonFlagshipPrimaryStatDec"
+                android:id="@+id/buttonFlagshipPrimaryStatInc"
+                android:minWidth="44dip"
+                android:layout_weight="1" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/RadioGroupEndeavourType"
+                android:checkedButton="@+id/radioButtonExplore">
+
+                <RadioButton
+                    android:text="@string/explore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButtonExplore"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:onClick="onRadioButtonEndeavourClicked" />
+
+                <RadioButton
+                    android:text="@string/raid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButtonRaid"
+                    android:layout_weight="1"
+                    android:onClick="onRadioButtonEndeavourClicked" />
+
+                <RadioButton
+                    android:text="@string/sail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButtonSail"
+                    android:layout_weight="1"
+                    android:onClick="onRadioButtonEndeavourClicked" />
+            </RadioGroup>
+
+            <TextView
+                android:text="@string/endtype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewspace5"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/textView3" />
+
+            <TextView
+                android:text="@string/advisorbonus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView14"
+                android:id="@+id/textView15" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextAdvisorBonus"
+                android:text="0"
+                android:layout_below="@+id/textView15"
+                android:layout_toStartOf="@+id/buttonFlagshipPrimaryStatDec"
+                android:layout_alignRight="@+id/RadioGroupEndeavourType"
+                android:layout_alignEnd="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonAdvisorBonusDec"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textView15"
+                android:layout_toRightOf="@+id/RadioGroupEndeavourType"
+                android:layout_toEndOf="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonAdvisorBonusInc"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textView15"
+                android:layout_toRightOf="@+id/buttonAdvisorBonusDec"
+                android:layout_toEndOf="@+id/buttonAdvisorBonusDec" />
+            <TextView
+                android:text="@string/sitestats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/viewspace4"
+                android:textSize="18sp"
+                android:id="@+id/textView16" />
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorSpacer"
+                android:id="@+id/viewspace1"
+                android:layout_below="@+id/RadioGroupEndeavourType"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorSpacer"
+                android:id="@+id/viewspace2"
+                android:layout_below="@+id/editTextFlagshipDamage"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorSpacer"
+                android:id="@+id/viewspace3"
+                android:layout_below="@+id/editTextSupportShipDiceBonus"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorSpacer"
+                android:id="@+id/viewspace4"
+                android:layout_below="@+id/editTextAdvisorBonus"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorSpacer"
+                android:id="@+id/viewspace5"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/editTextFlagshipDamage"
+                android:layout_alignStart="@+id/editTextFlagshipDamage" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorSpacer"
+                android:id="@+id/viewspace6"
+                android:layout_below="@+id/switchGarrisonExplore"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewEnmity"
+                android:text="@string/enmity"
+                android:layout_below="@+id/viewspace6"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewSelfHeldEnmity"
+                android:text="@string/selfheldenmity"
+                android:layout_below="@+id/textViewEnmity"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextSelfHeldEnmity"
+                android:text="0"
+                android:layout_below="@+id/textViewSelfHeldEnmity"
+                android:layout_alignRight="@+id/RadioGroupEndeavourType"
+                android:layout_alignEnd="@+id/RadioGroupEndeavourType" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewDefHeldEnmity"
+                android:text="@string/defheldenmity"
+                android:layout_below="@+id/editTextSelfHeldEnmity"  />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextDefHeldEnmity"
+                android:text="0"
+                android:layout_below="@+id/textViewDefHeldEnmity"
+                android:layout_alignRight="@+id/RadioGroupEndeavourType"
+                android:layout_alignEnd="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonDefHeldEnmityDec"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textViewDefHeldEnmity"
+                android:layout_toRightOf="@+id/RadioGroupEndeavourType"
+                android:layout_toEndOf="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonDefHeldEnmityInc"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textViewDefHeldEnmity"
+                android:layout_toRightOf="@+id/buttonAdvisorBonusDec"
+                android:layout_toEndOf="@+id/buttonAdvisorBonusDec" />
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonSelfHeldEnmityDec"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textViewSelfHeldEnmity"
+                android:layout_toRightOf="@+id/RadioGroupEndeavourType"
+                android:layout_toEndOf="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonSelfHeldEnmityInc"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textViewSelfHeldEnmity"
+                android:layout_toRightOf="@+id/buttonAdvisorBonusDec"
+                android:layout_toEndOf="@+id/buttonAdvisorBonusDec" />
+            <TextView
+                android:text="@string/garrison"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView16"
+                android:id="@+id/textView17" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextGarrison"
+                android:text="1"
+                android:layout_below="@+id/textView17"
+                android:layout_alignRight="@+id/RadioGroupEndeavourType"
+                android:layout_alignEnd="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonGarrisonDec"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textView17"
+                android:layout_toRightOf="@+id/RadioGroupEndeavourType"
+                android:layout_toEndOf="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonGarrisonInc"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textView17"
+                android:layout_toRightOf="@+id/buttonAdvisorBonusDec"
+                android:layout_toEndOf="@+id/buttonAdvisorBonusDec" />
+
+            <TextView
+                android:text="@string/garrisondesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextGarrison"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/textViewGarrisonDesc" />
+
+            <TextView
+                android:text="@string/defenselabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="2dp"
+                android:layout_below="@+id/textViewGarrisonDesc"
+                android:id="@+id/textView18" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextDefense"
+                android:text="1"
+                android:layout_below="@+id/textView18"
+                android:layout_alignRight="@+id/RadioGroupEndeavourType"
+                android:layout_alignEnd="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonDefenseDec"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textView18"
+                android:layout_toRightOf="@+id/RadioGroupEndeavourType"
+                android:layout_toEndOf="@+id/RadioGroupEndeavourType" />
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonDefenseInc"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textView18"
+                android:layout_toRightOf="@+id/buttonAdvisorBonusDec"
+                android:layout_toEndOf="@+id/buttonAdvisorBonusDec" />
+
+            <TextView
+                android:text="@string/defensedesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextDefense"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/textViewDefenseDesc" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switchHomeProvinceAttacker"
+                android:text="@string/homeprovinceattack"
+                android:layout_below="@+id/textViewDefenseDesc" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switchHomeProvinceDefender"
+                android:text="@string/homeprovincedefend"
+                android:layout_below="@+id/switchHomeProvinceAttacker" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switchGarrisonExplore"
+                android:text="@string/garrisonend"
+                android:layout_below="@+id/switchHomeProvinceDefender" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextDefHeldEnmity"
+                android:layout_toRightOf="@+id/buttonBack"
+                android:id="@+id/buttonCalculateDicePool"
+                android:layout_marginTop="10dp"
+                android:text="@string/calculatedicepool"/>
+            <Button
+                android:text="@string/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextDefHeldEnmity"
+                android:id="@+id/buttonBack"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextSupportShipDamage"
+                android:text="0"
+                android:layout_alignBaseline="@+id/buttonSupportShipDamageDec"
+                android:layout_alignBottom="@+id/buttonSupportShipDamageDec"
+                android:layout_alignLeft="@+id/textView13"
+                android:layout_alignStart="@+id/textView13"
+                android:layout_toLeftOf="@+id/buttonSupportShipUpgradeDec"
+                android:layout_toStartOf="@+id/buttonSupportShipUpgradeDec" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextSupportShipDamage"
+                android:id="@+id/textView19"
+                android:text="@string/supportshipdicebonus"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextSupportShipDiceBonus"
+                android:layout_below="@+id/textView19"
+                android:inputType="none"
+                android:text="0"
+                android:layout_toLeftOf="@+id/buttonSupportShipDamageDec"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonSupportShipUpgradeDiceDec"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textView19"
+                android:layout_toRightOf="@+id/RadioGroupEndeavourType"
+                android:layout_toEndOf="@+id/RadioGroupEndeavourType" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonFlagshipDamageDec"
+                android:minWidth="44dip"
+                android:layout_below="@+id/textView10"
+                android:layout_toRightOf="@+id/editTextFlagshipDamage"
+                android:layout_toEndOf="@+id/editTextFlagshipDamage" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonSupportShipUpgradeDiceInc"
+                android:minWidth="44dip"
+                android:layout_alignBaseline="@+id/editTextSupportShipDiceBonus"
+                android:layout_alignBottom="@+id/editTextSupportShipDiceBonus"
+                android:layout_toRightOf="@+id/buttonSupportShipUpgradeDiceDec"
+                android:layout_toEndOf="@+id/buttonSupportShipUpgradeDiceDec" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonSupportShipPrimaryStatInc"
+                android:minWidth="44dip"
+                android:layout_alignBaseline="@+id/buttonSupportShipPrimaryStatDec"
+                android:layout_alignBottom="@+id/buttonSupportShipPrimaryStatDec"
+                android:layout_alignRight="@+id/textView10"
+                android:layout_alignEnd="@+id/textView10" />
+
+            <TextView
+                android:text="Results go here"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="122dp"
+                android:layout_marginEnd="122dp"
+                android:layout_marginTop="30dp"
+                android:id="@+id/textViewTempResults" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

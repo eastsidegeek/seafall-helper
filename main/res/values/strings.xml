@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SeaFall Steward</string>
-    <string name="strongon">Stong Successes Double</string>
-    <string name="strongoff">Stong Successes Normal</string>
+    <string name="strongon">Strong Successes Double</string>
+    <string name="strongoff">Strong Successes Normal</string>
     <string name="rerollweakon">Reroll Weak Successes</string>
     <string name="rerollweakoff">Don\'t Reroll Weak</string>
     <string name="calculatego">Calculate Probabilties</string>
@@ -14,4 +14,28 @@
     <string name="addlfactors">Additional Factors</string>
     <string name="defense">Site Defense</string>
     <string name="flagshipstats">Flagship Stats</string>
+    <string name="shipstat">Endeavour Stat</string>
+    <string name="statdamage">Damage to Endeavour Stat</string>
+    <string name="primaryshipupgrades">Bonuses from Upgrades</string>
+    <string name="supportshipsats">Support Ship Stats</string>
+    <string name="supportshipbonus">Stat Bonus from Upgrades (eg, Terrible)</string>
+    <string name="supportshipdicebonus">Dice Bonus from Upgrades (eg, Nimble)</string>
+    <string name="advisorstat">Advisor Stats</string>
+    <string name="advisorbonus">Bonus From Advisor</string>
+    <string name="sitestats">Target Site/Ship Stats</string>
+    <string name="back">&lt;&lt; Back</string>
+    <string name="wizard">Dice Pool Wizard &gt;&gt;</string>
+    <string name="wizardtitle">Dice Pool Wizard</string>
+    <string name="garrison">Garrison</string>
+    <string name="garrisondesc">Site Garrison: Number in black circle\nProvince Garrison: Number in black circle plus any upgrades\nShip Garrison: Hold Value (including upgrades)</string>
+    <string name="defenselabel">Defense</string>
+    <string name="defensedesc">Site Defense: Number in red or black shield\nShip Defense: Higher of Sail or Raid</string>
+    <string name="defendingsupportship">Defending Support Ship Active</string>
+    <string name="homeprovincedefend">In Defender\'s Home Province</string>
+    <string name="homeprovinceattack">Attacker in Home Province</string>
+    <string name="garrisonend">Garrison Applies to Explore</string>
+    <string name="calculatedicepool">Calculate Dice Pool &gt;&gt;</string>
+    <string name="enmity">Enmity</string>
+    <string name="selfheldenmity">Defender\'s Enmity Held by Attacker</string>
+    <string name="defheldenmity">Attacker\'s Enmity at Site / Enmity Held by Defender</string>
 </resources>
