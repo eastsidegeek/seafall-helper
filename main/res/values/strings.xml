@@ -38,4 +38,6 @@
     <string name="enmity">Enmity</string>
     <string name="selfheldenmity">Defender\'s Enmity Held by Attacker</string>
     <string name="defheldenmity">Attacker\'s Enmity at Site / Enmity Held by Defender</string>
+    <string name="weaksdontcount">Weak Successses Don\'t Count</string>
+    <string name="additionalsuccesses">Additional Successes (Unrolled)</string>
 </resources>

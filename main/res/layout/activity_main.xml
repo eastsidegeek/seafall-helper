@@ -78,25 +78,6 @@
                 android:layout_alignRight="@+id/buttonCalculate"
                 android:layout_alignEnd="@+id/buttonCalculate" />
 
-            <Button
-                android:text="@string/calculatego"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/buttonCalculate"
-                android:layout_below="@+id/switchRerollWeak"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:text="@string/addlfactors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView4"
-                android:layout_below="@+id/buttonDiceDec"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="69dp" />
-
             <Switch
                 android:text="@string/strongon"
                 android:layout_width="wrap_content"
@@ -161,6 +142,82 @@
                 android:layout_marginStart="10dp"
                 android:id="@+id/buttonWizard"
                 android:layout_alignBottom="@+id/editTextDefense" />
+
+            <Switch
+                android:text="@string/weaksdontcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/switchRerollWeak"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/switchWeaksDontCount"
+                android:layout_alignRight="@+id/switchRerollWeak"
+                android:layout_alignEnd="@+id/switchRerollWeak" />
+
+            <TextView
+                android:text="@string/additionalsuccesses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="132dp"
+                android:id="@+id/textView2" />
+
+            <Button
+                android:text="@string/calculatego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonCalculate"
+                android:layout_below="@+id/switchWeaksDontCount"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="11dp" />
+
+            <TextView
+                android:text="@string/addlfactors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:layout_below="@+id/editTextAdditionalSuccesses"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:ems="10"
+                android:id="@+id/editTextAdditionalSuccesses"
+                android:text="0"
+                android:layout_below="@+id/textView2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/buttonDefenseDec"
+                android:layout_toStartOf="@+id/buttonDefenseDec" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="103dp"
+                android:layout_marginStart="103dp"
+                android:layout_marginTop="150dp"
+                android:id="@+id/buttonAdditionalSuccessesDec"
+                android:minWidth="44dip" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/buttonAdditionalSuccessesDec"
+                android:layout_toRightOf="@+id/buttonAdditionalSuccessesDec"
+                android:layout_toEndOf="@+id/buttonAdditionalSuccessesDec"
+                android:id="@+id/buttonAdditionalSuccessesInc"
+                android:minWidth="44dip" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
