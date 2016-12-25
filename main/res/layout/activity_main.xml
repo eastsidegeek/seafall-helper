@@ -164,16 +164,6 @@
                 android:layout_marginTop="132dp"
                 android:id="@+id/textView2" />
 
-            <Button
-                android:text="@string/calculatego"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/buttonCalculate"
-                android:layout_below="@+id/switchWeaksDontCount"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="11dp" />
-
             <TextView
                 android:text="@string/addlfactors"
                 android:layout_width="wrap_content"
@@ -218,6 +208,27 @@
                 android:layout_toEndOf="@+id/buttonAdditionalSuccessesDec"
                 android:id="@+id/buttonAdditionalSuccessesInc"
                 android:minWidth="44dip" />
+
+            <Switch
+                android:text="@string/strongsdefraydamage"
+                android:layout_below="@+id/switchWeaksDontCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/switchStrongsDefrayDamage"
+                android:layout_alignRight="@+id/buttonCalculate"
+                android:layout_alignEnd="@+id/buttonCalculate" />
+
+            <Button
+                android:text="@string/calculatego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonCalculate"
+                android:layout_marginTop="14dp"
+                android:layout_below="@+id/switchStrongsDefrayDamage"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

@@ -15,6 +15,7 @@ import android.widget.ScrollView;
 import android.view.MotionEvent;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonCalculate;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Switch switchRerollWeak;
     private Switch switchDoubleStrong;
     private Switch switchWeaksDontCount;
+    private Switch switchStrongsDefrayDamage;
     private int intDiceCount;
     private int intDefense;
     private double[] doubleProbs;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         switchRerollWeak = (Switch) findViewById(R.id.switchRerollWeak);
         switchDoubleStrong = (Switch) findViewById(R.id.switchDoubleStrong);
         switchWeaksDontCount = (Switch) findViewById(R.id.switchWeaksDontCount);
+        switchStrongsDefrayDamage = (Switch) findViewById(R.id.switchStrongsDefrayDamage);
         buttonDiceDec = (Button) findViewById(R.id.buttonDiceDec);
         buttonDiceInc = (Button) findViewById(R.id.buttonDiceInc);
         buttonDefenseDec = (Button) findViewById(R.id.buttonDefenseDec);
@@ -93,19 +96,25 @@ public class MainActivity extends AppCompatActivity {
                 intDiceCount = Integer.parseInt(stringDiceCount);
                 stringDefense = editTextDefense.getText().toString();
                 intDefense = Integer.parseInt(stringDefense);
+                double doubleNoDamage = 0.0;
                 double doubleDamageChance = 0.0;
                 double doubleOneDamage = 0.0;
                 double doubleTwoDamage = 0.0;
                 double doubleThreePlusDamage = 0.0;
-                int i;
+                double dTempProb,dHitChance,dMissChance;
+                int i,j;
+                int iSuccessCase;
+                double[] dSSProb = new double[intDiceCount+1];
 
                 doubleProbs = findResults(intDiceCount);
-
                 String stringResults = "";
                 int resultLength = doubleProbs.length;
 
                 if(resultLength < intDefense) {
+                    doubleNoDamage = 0.0;
                     doubleDamageChance = 100.0;
+                    doubleTwoDamage = 100.0;
+                    doubleThreePlusDamage = 100.0;
                 } else {
                     for(i=0;i<intDefense;i++) {
                         doubleDamageChance += doubleProbs[i]*100;
@@ -120,9 +129,94 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     } // end for
+                    doubleNoDamage = (100-doubleDamageChance);
                 } // end resultLength
 
-                stringResults += "Chance of No Damage: "+String.format("%2.1f",(100-doubleDamageChance))+"%\n";
+                if(switchStrongsDefrayDamage.isChecked()) {
+                    doubleOneDamage = 0.0;
+                    doubleTwoDamage = 0.0;
+                    doubleThreePlusDamage = 0.0;
+                    //doubleNoDamage = 0.0;
+
+                    iSuccessCase = intDefense - 1;
+                    if(switchWeaksDontCount.isChecked()) {
+                        dHitChance = 1.0/3.0;
+                        dMissChance = 2.0/3.0;
+                    } else {
+                        dHitChance = 1.0/4.0;
+                        dMissChance = 3.0/4.0;
+                    }
+
+                    if(iSuccessCase > 0) {
+                        dTempProb = 0.0;
+
+                        for (i=1; i<(iSuccessCase+1); i++) {
+                            dTempProb += strongSuccessCountProb(iSuccessCase, i, dHitChance, dMissChance);
+                        }
+                        doubleNoDamage += (100.0 * doubleProbs[iSuccessCase] * dTempProb);
+                    } // end iSuccessCase at least 0
+
+                    iSuccessCase = intDefense - 2;
+                    if(iSuccessCase > 0) {
+                        dTempProb = 0.0;
+                        dTempProb = strongSuccessCountProb(iSuccessCase,1,dHitChance,dMissChance); // chance of one success
+                        doubleOneDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+                        dTempProb = 0.0;
+
+                        for (i=2; i<(iSuccessCase+1); i++) { // calculate chance of 2 or more successes
+                            dTempProb += strongSuccessCountProb(iSuccessCase, i, dHitChance, dMissChance);
+                        }
+                        doubleNoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+
+                    }
+
+                    iSuccessCase = intDefense - 3;
+                    if(iSuccessCase > 0) {
+                        dTempProb = 0.0;
+                        dTempProb = strongSuccessCountProb(iSuccessCase,1,dHitChance,dMissChance); // chance of one success
+                        doubleTwoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+                        dTempProb = 0.0;
+
+                        dTempProb = strongSuccessCountProb(iSuccessCase,2,dHitChance,dMissChance); // chance of two successes
+                        doubleOneDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+                        dTempProb = 0.0;
+
+                        for (i=3; i<(iSuccessCase+1); i++) { // calculate chance of 2 or more successes
+                            dTempProb += strongSuccessCountProb(iSuccessCase, i, dHitChance, dMissChance);
+                        }
+                        doubleNoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+
+                    }
+
+                    for(i=4; i<intDefense; i++) {
+                    iSuccessCase = intDefense - i;
+                        if(iSuccessCase > 0) {
+                            dTempProb = 0.0;
+                            dTempProb = strongSuccessCountProb(iSuccessCase,i-3,dHitChance,dMissChance); // chance of enough successes to get to three damage
+                            doubleThreePlusDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+                            dTempProb = 0.0;
+
+                            dTempProb = strongSuccessCountProb(iSuccessCase,i-2,dHitChance,dMissChance); // chance of enough successes to get to two damage
+                            doubleTwoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+                            dTempProb = 0.0;
+
+                            dTempProb = strongSuccessCountProb(iSuccessCase,i-1,dHitChance,dMissChance); // chance of enough successes to get to one damage
+                            doubleOneDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+                            dTempProb = 0.0;
+
+                            for (j=i; j<(iSuccessCase+1); j++) {
+                                if(iSuccessCase > j) {
+                                    dTempProb += strongSuccessCountProb(iSuccessCase, j, dHitChance, dMissChance);
+                                }
+                            }
+                            doubleNoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+
+                        }
+                    }
+                    doubleThreePlusDamage = 100 - doubleNoDamage - doubleOneDamage - doubleTwoDamage;
+                } // end if Strongs Defray Damage is Checked
+
+                stringResults += "Chance of No Damage: "+String.format("%2.1f",doubleNoDamage)+"%\n";
                 stringResults += "Chance of 1/2/3+ Damage: "+String.format("%2.1f",doubleOneDamage)+"% / "+String.format("%2.1f",doubleTwoDamage)+"% / "+String.format("%2.1f",doubleThreePlusDamage)+"%\n\n";
 
                 for (i = 0; i < resultLength; i++) {
@@ -134,6 +228,28 @@ public class MainActivity extends AppCompatActivity {
 
                 } // end for
 
+                if(switchStrongsDefrayDamage.isChecked()) {
+                    if(switchWeaksDontCount.isChecked()) {
+                        for (i = 0; i < (intDiceCount + 1); i++) {
+                            dSSProb[i] = strongSuccessCountProb(intDiceCount, i, 1.0 / 5.0, 4.0 / 5.0);
+                        } // end loop from 0 to dice Count
+                    } else {
+                        for (i = 0; i < (intDiceCount + 1); i++) {
+                            dSSProb[i] = strongSuccessCountProb(intDiceCount, i, 1.0 / 6.0, 5.0 / 6.0);
+                        } // end loop from 0 to dice Count
+                    }
+
+                    stringResults += "\nChance of:\n";
+                    for(i=0; i < (intDiceCount +1); i++) {
+                        if (i==1) {
+                            stringResults += i + " strong success: " + String.format("%2.1f", 100 * dSSProb[i]) + "%\n";
+                        } else {
+                            stringResults += i + " strong successes: " + String.format("%2.1f", 100 * dSSProb[i]) + "%\n";
+                        }
+
+                    } // end loop from 0 to dice Count
+
+                } // end if Strongs Defray is checked
 
                 textViewResults.setText(stringResults);
             } // end onClick
@@ -358,6 +474,43 @@ public class MainActivity extends AppCompatActivity {
         } // end for i
         return product;
     } // end multiplyPolys
+
+   private double strongSuccessCountProb(int iDiceCount, int iSuccessCount, double dHitChance, double dMissChance) {
+       int binCoeff = binomialCoeff(iDiceCount, iSuccessCount);
+       double hit = Math.pow(dHitChance,iSuccessCount);
+       double miss = Math.pow(dMissChance,(iDiceCount-iSuccessCount));
+
+       return (hit * miss * binCoeff);
+
+   } // end strongSuccessCountProb
+
+    private int binomialCoeff(int n, int k) {
+        int num;
+        int dem1;
+        int dem2;
+        if(k == 0) {
+            return 1;
+        }
+        if(n == k) {
+            return 1;
+        }
+        num = factorial(n);
+        dem2 = factorial(k);
+        dem1 = factorial(n-k);
+        return (num/(dem1 * dem2));
+    } // end binomialCoeff
+
+    private int factorial(int n) {
+        int i;
+        int j;
+        int a = n;
+        for (i=1; i< n; i++) {
+            j=n-i;
+            a = a * j;
+        } // end for
+        return a;
+    } // end factorial
+
 
 
 } // end MainActivity class extending AppCompatActivity

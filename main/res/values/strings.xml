@@ -16,7 +16,7 @@
     <string name="flagshipstats">Flagship Stats</string>
     <string name="shipstat">Endeavour Stat</string>
     <string name="statdamage">Damage to Endeavour Stat</string>
-    <string name="primaryshipupgrades">Bonuses from Upgrades</string>
+    <string name="primaryshipupgrades">Bonuses from Upgrades or Nearby Colonies</string>
     <string name="supportshipsats">Support Ship Stats</string>
     <string name="supportshipbonus">Stat Bonus from Upgrades (eg, Terrible)</string>
     <string name="supportshipdicebonus">Dice Bonus from Upgrades (eg, Nimble)</string>
@@ -40,4 +40,5 @@
     <string name="defheldenmity">Attacker\'s Enmity at Site / Enmity Held by Defender</string>
     <string name="weaksdontcount">Weak Successses Don\'t Count</string>
     <string name="additionalsuccesses">Additional Successes (Unrolled)</string>
+    <string name="strongsdefraydamage">Calculate Strong Success Chances</string>
 </resources>
