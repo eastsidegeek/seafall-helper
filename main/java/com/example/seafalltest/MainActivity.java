@@ -101,42 +101,46 @@ public class MainActivity extends AppCompatActivity {
                 double doubleOneDamage = 0.0;
                 double doubleTwoDamage = 0.0;
                 double doubleThreePlusDamage = 0.0;
-                double dTempProb,dHitChance,dMissChance;
-                int i,j;
+                double dTempProb, dHitChance, dMissChance;
+                int i, j;
                 int iSuccessCase;
-                double[] dSSProb = new double[intDiceCount+1];
+                double[] dSSProb = new double[intDiceCount + 1];
 
                 doubleProbs = findResults(intDiceCount);
                 String stringResults = "";
                 int resultLength = doubleProbs.length;
 
-                if(resultLength < intDefense) {
-                    doubleNoDamage = 0.0;
-                    doubleDamageChance = 100.0;
+                if ((intDefense - resultLength) == 1) {
+                    doubleOneDamage = 100.0;
+                } else if((intDefense - resultLength) == 2) {
+                    doubleOneDamage = 100.0;
+                    doubleTwoDamage = 100.0;
+                } else if((intDefense - resultLength) > 2) {
+                    doubleOneDamage = 100.0;
                     doubleTwoDamage = 100.0;
                     doubleThreePlusDamage = 100.0;
                 } else {
                     for(i=0;i<intDefense;i++) {
-                        doubleDamageChance += doubleProbs[i]*100;
+                        //doubleDamageChance += doubleProbs[i]*100;
                         if((intDefense-i)==1) {
-                            doubleOneDamage = doubleDamageChance;
+                            doubleOneDamage += 100.0 * doubleProbs[i];
                         }
                         if((intDefense-i)==2) {
-                            doubleTwoDamage = doubleDamageChance;
+                            doubleTwoDamage += 100.0 * doubleProbs[i];
                         }
-                        if((intDefense-i)==3) {
-                            doubleThreePlusDamage = doubleDamageChance;
+                        if((intDefense-i)>2) {
+                            doubleThreePlusDamage += 100.0 * doubleProbs[i];
                         }
 
                     } // end for
-                    doubleNoDamage = (100-doubleDamageChance);
+                    doubleNoDamage = (100.0-doubleOneDamage-doubleTwoDamage-doubleThreePlusDamage);
                 } // end resultLength
 
                 if(switchStrongsDefrayDamage.isChecked()) {
                     doubleOneDamage = 0.0;
                     doubleTwoDamage = 0.0;
                     doubleThreePlusDamage = 0.0;
-                    //doubleNoDamage = 0.0;
+                    doubleNoDamage = 0.0;
 
                     iSuccessCase = intDefense - 1;
                     if(switchWeaksDontCount.isChecked()) {
@@ -147,73 +151,37 @@ public class MainActivity extends AppCompatActivity {
                         dMissChance = 3.0/4.0;
                     }
 
-                    if(iSuccessCase > 0) {
-                        dTempProb = 0.0;
+                    for(i=0;i<intDefense;i++) { // first we iterate from zero successes up to one less than site defense
+                                                // this is the number of successes 'rolled'
+                        for(j=0;j<(i+1);j++) { // next we iterate from 0 to i
+                                                // this is the number of strong successes we'll be calculating the chances of
+                            dTempProb = strongSuccessCountProb(i,j,dHitChance,dMissChance);
 
-                        for (i=1; i<(iSuccessCase+1); i++) {
-                            dTempProb += strongSuccessCountProb(iSuccessCase, i, dHitChance, dMissChance);
-                        }
-                        doubleNoDamage += (100.0 * doubleProbs[iSuccessCase] * dTempProb);
-                    } // end iSuccessCase at least 0
-
-                    iSuccessCase = intDefense - 2;
-                    if(iSuccessCase > 0) {
-                        dTempProb = 0.0;
-                        dTempProb = strongSuccessCountProb(iSuccessCase,1,dHitChance,dMissChance); // chance of one success
-                        doubleOneDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
-                        dTempProb = 0.0;
-
-                        for (i=2; i<(iSuccessCase+1); i++) { // calculate chance of 2 or more successes
-                            dTempProb += strongSuccessCountProb(iSuccessCase, i, dHitChance, dMissChance);
-                        }
-                        doubleNoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
-
-                    }
-
-                    iSuccessCase = intDefense - 3;
-                    if(iSuccessCase > 0) {
-                        dTempProb = 0.0;
-                        dTempProb = strongSuccessCountProb(iSuccessCase,1,dHitChance,dMissChance); // chance of one success
-                        doubleTwoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
-                        dTempProb = 0.0;
-
-                        dTempProb = strongSuccessCountProb(iSuccessCase,2,dHitChance,dMissChance); // chance of two successes
-                        doubleOneDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
-                        dTempProb = 0.0;
-
-                        for (i=3; i<(iSuccessCase+1); i++) { // calculate chance of 2 or more successes
-                            dTempProb += strongSuccessCountProb(iSuccessCase, i, dHitChance, dMissChance);
-                        }
-                        doubleNoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
-
-                    }
-
-                    for(i=4; i<intDefense; i++) {
-                    iSuccessCase = intDefense - i;
-                        if(iSuccessCase > 0) {
-                            dTempProb = 0.0;
-                            dTempProb = strongSuccessCountProb(iSuccessCase,i-3,dHitChance,dMissChance); // chance of enough successes to get to three damage
-                            doubleThreePlusDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
-                            dTempProb = 0.0;
-
-                            dTempProb = strongSuccessCountProb(iSuccessCase,i-2,dHitChance,dMissChance); // chance of enough successes to get to two damage
-                            doubleTwoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
-                            dTempProb = 0.0;
-
-                            dTempProb = strongSuccessCountProb(iSuccessCase,i-1,dHitChance,dMissChance); // chance of enough successes to get to one damage
-                            doubleOneDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
-                            dTempProb = 0.0;
-
-                            for (j=i; j<(iSuccessCase+1); j++) {
-                                if(iSuccessCase > j) {
-                                    dTempProb += strongSuccessCountProb(iSuccessCase, j, dHitChance, dMissChance);
+                            if((intDefense - i - j) > 2) {
+                                if(i==0) {
+                                    doubleThreePlusDamage += 100.0 * doubleProbs[0];
+                                } else {
+                                    doubleThreePlusDamage += 100.0 * doubleProbs[i] * dTempProb;
                                 }
                             }
-                            doubleNoDamage += (100 * dTempProb * doubleProbs[iSuccessCase]);
+                            if((intDefense - i - j) == 2) {
+                                if(i==0) {
+                                    doubleTwoDamage += 100.0 * doubleProbs[0];
+                                } else {
+                                    doubleTwoDamage += 100.0 * doubleProbs[i] * dTempProb;
+                                }
+                            }
+                            if((intDefense - i - j) == 1) {
+                                if(i==0) {
+                                    doubleOneDamage += 100.0 * doubleProbs[0];
+                                } else {
+                                    doubleOneDamage += 100.0 * doubleProbs[i] * dTempProb;
+                                }
+                            }
 
-                        }
-                    }
-                    doubleThreePlusDamage = 100 - doubleNoDamage - doubleOneDamage - doubleTwoDamage;
+                        } // end j to i+1
+                    } // end i to intDefense
+                    doubleNoDamage = (100.0 - doubleOneDamage - doubleTwoDamage - doubleThreePlusDamage);
                 } // end if Strongs Defray Damage is Checked
 
                 stringResults += "Chance of No Damage: "+String.format("%2.1f",doubleNoDamage)+"%\n";
