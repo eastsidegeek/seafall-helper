@@ -40,5 +40,5 @@
     <string name="defheldenmity">Attacker\'s Enmity at Site / Enmity Held by Defender</string>
     <string name="weaksdontcount">Weak Successses Don\'t Count</string>
     <string name="additionalsuccesses">Additional Successes (Unrolled)</string>
-    <string name="strongsdefraydamage">Calculate Strong Success Chances</string>
+    <string name="strongsdefraydamage">Strong Successes Defray Damage</string>
 </resources>
