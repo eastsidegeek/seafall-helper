@@ -7,8 +7,6 @@ Current features:
  - Calculates chances of taking damage
  - Calculates dice pool based with a wizard-based approach
  
- Known issue:
- In most cases, the values for 1/2 damage are the chances of getting at least that much. However, when you check the box for Strong Successes Defraying Damage, the values are the probabilities of getting exactly that much damage. The probabilities need to be fixed for the first case so it's always exact, rather than at-least.
 
  
 
